@@ -7,12 +7,16 @@ Feature: Login
         Given I am on the login page
 
     Scenario: Login with valid credentials
-        When I submit my credentials with "qa" and "xperience"
+        When I submit my credentials:
+            | username | qa        |
+            | password | xperience |
         Then I should be authenticated on the application
     
     Scenario Outline: Login attempts
 
-        When I submit my credentials with "<username>" and "<password>"
+        When I submit my credentials:
+            | username | <username> |
+            | password | <password> |
         Then I should see an error message "<message>"
 
         Examples:
